@@ -1,20 +1,31 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
-export default function App() {
+import MainScreen from './MainScreen';
+import Mensajeria from './views/mensajeria/Mensajeria';
+import GeolocationView from './views/Localizacion/GeolocationView';
+import Almacenamiento from './views/Almacenamiento/Almacenamiento';
+import Camara from './views/Camara/Camara';
+
+
+
+
+const Stack = createStackNavigator();
+
+const App = () => {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Main" component={MainScreen} options={{ title: 'Main Screen' }} />
+        <Stack.Screen name="Mensajeria" component={Mensajeria} options={{ title: 'Contact Form' }} />
+        <Stack.Screen name="GeolocationView" component={GeolocationView} options={{ title: 'Geolocation View' }} />
+        <Stack.Screen name="Almacenamiento" component={Almacenamiento} options={{ title: 'Geolocation View' }} />
+        <Stack.Screen name="Camara" component={Camara} options={{ title: 'Geolocation View' }} />
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+};
+
+export default App;
